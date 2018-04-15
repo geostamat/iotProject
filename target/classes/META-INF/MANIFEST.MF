@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: iotProject
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: geost
+Implementation-Vendor-Id: eu.codschool.project
+Build-Jdk: 1.8.0_161
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/iotproject
+Created-By: Maven Integration for Eclipse
+
