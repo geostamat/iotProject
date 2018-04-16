@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>SB Admin - Start Bootstrap Template</title>
+  <title>Iota5 - Registration</title>
   <!-- Bootstrap core CSS-->
   <link type="text/css" href="../static/vendor/bootstrap/css/bootstrap.min.css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -22,14 +22,14 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="index.html">Iota5</a>
+    <a class="navbar-brand" href="/">Iota5</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Login">
-          <a class="nav-link" href="/login">
+          <a class="nav-link" href="/iota5/login">
             <i class="fa fa-fw fa-sign-in"></i>
             <span class="nav-link-text">Log In</span>
           </a>
@@ -46,10 +46,8 @@
             <span class="nav-link-text">About</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseAbout">
-            <li>
-            	<p>
-              		This project was made for JavaCoding School 2018 by Team 2
-              	</p>
+            <li class="nav-item">
+            	<span class="nav-link-text">This project was made for JavaCoding School 2018 by Team 2</span>
             </li>
           </ul>
         </li>
@@ -64,36 +62,52 @@
       <ul class="navbar-nav ml-auto">
       </ul>
     </div>
-  </nav>  
-      <div class="content-wrapper">
-    	<div class="container-fluid">
-		    <div class="card card-login mx-auto mt-5">
-		      <div class="card-header">Login</div>
-		      <div class="card-body">
-		        <form>
-		          <div class="form-group">
-		            <label for="exampleInputEmail1">Email address</label>
-		            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
-		          </div>
-		          <div class="form-group">
-		            <label for="exampleInputPassword1">Password</label>
-		            <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
-		          </div>
-		          <div class="form-group">
-		            <div class="form-check">
-		              <label class="form-check-label">
-		                <input class="form-check-input" type="checkbox"> Remember Password</label>
-		            </div>
-		          </div>
-		          <a class="btn btn-primary btn-block" href="index.html">Login</a>
-		        </form>
-		        <div class="text-center">
-		          <a class="d-block small mt-3" href="register.html">Register an Account</a>
-		          <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
-		        </div>
-		      </div>
-	    </div>
-	  </div>
+  </nav>
+  <div class="container">
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Register an Account</div>
+      <div class="card-body">
+        <form th:action="@{/registration}" th:object="${user}" method="POST">
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6" th:classappend="${#fields.hasErrors('*{name}')} ? 'has-error' : ''">
+                <label for="exampleInputName">First name</label>
+                <input class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Enter first name" th:field="*{name}">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">..</span>
+              </div>
+              <div class="col-md-6" th:classappend="${#fields.hasErrors('*{surname}')} ? 'has-error' : ''">
+                <label for="exampleInputLastName">Last name</label>
+                <input class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Enter last name" th:field="*{surname}">
+                <span th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">..</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group" th:classappend="${#fields.hasErrors('email')} ? 'has-error' : ''">
+            <label for="exampleInputEmail1">Email address</label>
+            <input class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email" th:field="*{email}">
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">..</span>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6" th:classappend="${#fields.hasErrors('password')} ? 'has-error' : ''">
+                <label for="exampleInputPassword1">Password</label>
+                <input class="form-control" id="exampleInputPassword1" type="password" placeholder="Password" th:field="*{password}">
+                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">..</span>
+              </div>
+              <div class="col-md-6">
+                <label for="exampleConfirmPassword">Confirm password</label>
+                <input class="form-control" id="exampleConfirmPassword" type="password" placeholder="Confirm password">
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Register</button>
+        </form>
+        <div class="text-center">
+          <a class="d-block small mt-3" href="login.html">Login Page</a>
+          <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+        </div>
+      </div>
+    </div>
   </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
