@@ -43,7 +43,6 @@ public class IndexController {
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String registration(Model model) {
         model.addAttribute("user", new User());
-        System.out.println("GET CONTROLLER");
         return "registration";
     }
     

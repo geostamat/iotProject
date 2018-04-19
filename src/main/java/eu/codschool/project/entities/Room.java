@@ -40,7 +40,7 @@ public class Room {
 
 	@Override
 	public String toString() {
-		return "Room ID:" + roomId + "\nRoom name: " + roomName;
+		return roomName;
 	}
 	
 	

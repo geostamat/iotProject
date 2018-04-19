@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import eu.codschool.project.entities.Device;
+import eu.codschool.project.entities.DeviceType;
 import eu.codschool.project.entities.Room;
 
 public interface AdminService {
@@ -13,5 +14,6 @@ public interface AdminService {
 	void addRoom(Room room);
 	List<Device> getAllDevices();
 	void addDevice(Device device);
+	List<DeviceType> getAllDeviceTypes();
 
 }

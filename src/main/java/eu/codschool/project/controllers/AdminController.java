@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import eu.codschool.project.entities.Device;
+import eu.codschool.project.entities.DeviceType;
+import eu.codschool.project.entities.Room;
 import eu.codschool.project.entities.User;
 import eu.codschool.project.services.AdminService;
 import eu.codschool.project.services.UserService;
@@ -34,13 +38,33 @@ public class AdminController {
     @RequestMapping(value = {"/admin/managerooms"}, method = RequestMethod.GET)
     public String manageRooms(Model model) {
     	model.addAttribute("rooms", adminService.getAllRooms());
+    	model.addAttribute("addroom", new Room());
         return "managerooms";
     }
     
     @RequestMapping(value = {"/admin/managedevices"}, method = RequestMethod.GET)
     public String manageDevices(Model model) {
+    	model.addAttribute("adddevice", new Device());
     	model.addAttribute("devices", adminService.getAllDevices());
-        return "manageDevices";
+    	model.addAttribute("rooms", adminService.getAllRooms());
+    	model.addAttribute("deviceTypes", adminService.getAllDeviceTypes());
+        return "managedevices";
+    }
+    
+    @RequestMapping(value = "/admin/managerooms", method = RequestMethod.POST)
+    public String addRoom(@ModelAttribute("addroom") Room room, Model model) {
+    	System.out.println("POST controller");
+        adminService.addRoom(room);
+        System.out.println(room);
+        System.out.println("Success");
+        return "managerooms";
+    }
+    
+    @RequestMapping(value = "/admin/managedevices", method = RequestMethod.POST)
+    public String addDevice(@ModelAttribute("adddevice") Device device, Model model) {
+    	System.out.println("POST controller");
+        adminService.addDevice(device);
+        return "managedevices";
     }
 	
     

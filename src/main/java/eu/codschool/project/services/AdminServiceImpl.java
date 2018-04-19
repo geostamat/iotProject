@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import eu.codschool.project.entities.Device;
+import eu.codschool.project.entities.DeviceType;
 import eu.codschool.project.entities.Room;
 import eu.codschool.project.repositories.DeviceRepository;
+import eu.codschool.project.repositories.DeviceTypeRepository;
 import eu.codschool.project.repositories.RoomRepository;
 
 @Service
@@ -18,6 +20,9 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
 	DeviceRepository deviceRepository;
+	
+	@Autowired
+	DeviceTypeRepository deviceTypeRepository;
 	
 	@Override
 	public List<Room> getAllRooms() {
@@ -38,6 +43,11 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void addDevice(Device device) {
 		deviceRepository.save(device);
+	}
+
+	@Override
+	public List<DeviceType> getAllDeviceTypes() {
+		return deviceTypeRepository.findAll();
 	}
 
 }
