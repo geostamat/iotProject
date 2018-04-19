@@ -2,6 +2,8 @@ package eu.codschool.project.services;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import eu.codschool.project.entities.User;
 
 public interface UserService {
