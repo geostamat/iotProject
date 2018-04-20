@@ -35,7 +35,7 @@ public class AdminController {
         return "manageusers";
     }
     
-    @RequestMapping(value = {"/admin/managerooms"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/admin/managerooms", "/admin/deleteroom"}, method = RequestMethod.GET)
     public String manageRooms(Model model) {
     	model.addAttribute("rooms", adminService.getAllRooms());
     	model.addAttribute("addroom", new Room());
@@ -52,7 +52,7 @@ public class AdminController {
         return "managedevices";
     }
     
-    @RequestMapping(value = "/admin/managerooms", method = RequestMethod.POST)
+    @RequestMapping(value = {"/admin/managerooms"}, method = RequestMethod.POST)
     public String addRoom(@ModelAttribute("addroom") Room room, Model model) {
     	System.out.println("POST controller");
         adminService.addRoom(room);
@@ -69,13 +69,27 @@ public class AdminController {
     }
     
     @RequestMapping(value = "/admin/deleteroom", method = RequestMethod.POST)
-    public String deleteRoom(@ModelAttribute("deleteroom") Room room, Model model) {
-    	System.out.println("POST controller");
+    public String deleteRoom(@RequestParam(name = "deleteRoomId") Integer roomId, Model model) {
+    	Room room = adminService.getRoomById(roomId);
     	System.out.println(room);
         adminService.deleteRoom(room);
         System.out.println("Success");
+    	model.addAttribute("rooms", adminService.getAllRooms());
+    	model.addAttribute("addroom", new Room());
+    	model.addAttribute("deleteroom", new Room());
         return "managerooms";
     }
 	
+    @RequestMapping(value = {"/admin/viewdevices"}, method = RequestMethod.GET)
+    public String viewDevices(Model model) {
+    	model.addAttribute("devices", adminService.getAllDevices());
+        return "viewdevices";
+    }
+    
+    @RequestMapping(value = {"/admin/manageuserz"}, method = RequestMethod.GET)
+    public String viewUsers(Model model) {
+    	model.addAttribute("users", adminService.getAllUsers());
+        return "viewdevices";
+    }
     
 }

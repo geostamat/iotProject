@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">	
+	
+	<div th:replace=head.html></div>
+		<div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Users </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                   <th>Surname</th>
+                   <th>Email</th>
+                   <th>Role</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="user : ${users}">
+					<td th:text="${user.getName()}">Name</td>
+					<td th:text="${user.getSurname()}">Surname</td>
+					<td th:text="${user.getEmail()}">Email</td>
+					<td th:text="${user.getRole()}">Role</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        </div>
+	<div th:replace="foot.html"></div>

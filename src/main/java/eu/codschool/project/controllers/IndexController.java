@@ -26,7 +26,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) {
-        return "emptyTemplateLogged";
+        return "index";
     }
     	
     @RequestMapping(value = "/login", method = RequestMethod.GET)

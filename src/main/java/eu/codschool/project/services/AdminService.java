@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import eu.codschool.project.entities.Device;
 import eu.codschool.project.entities.DeviceType;
 import eu.codschool.project.entities.Room;
+import eu.codschool.project.entities.User;
 
 public interface AdminService {
 	
@@ -16,5 +17,7 @@ public interface AdminService {
 	void addDevice(Device device);
 	List<DeviceType> getAllDeviceTypes();
 	void deleteRoom(Room room);
+	Room getRoomById(Integer id);
+	List<User> getAllUsers();
 
 }

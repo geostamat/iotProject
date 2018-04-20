@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 import eu.codschool.project.entities.Device;
 import eu.codschool.project.entities.DeviceType;
 import eu.codschool.project.entities.Room;
+import eu.codschool.project.entities.User;
 import eu.codschool.project.repositories.DeviceRepository;
 import eu.codschool.project.repositories.DeviceTypeRepository;
 import eu.codschool.project.repositories.RoomRepository;
+import eu.codschool.project.repositories.UserRepository;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -23,6 +25,9 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
 	DeviceTypeRepository deviceTypeRepository;
+	
+	@Autowired
+	UserRepository userRepository;
 	
 	@Override
 	public List<Room> getAllRooms() {
@@ -54,6 +59,16 @@ public class AdminServiceImpl implements AdminService {
 	public void deleteRoom(Room room) {
 		roomRepository.delete(room);
 		
+	}
+
+	@Override
+	public Room getRoomById(Integer id) {
+		return roomRepository.findByRoomId(id);
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		return userRepository.findAll();
 	}
 
 }

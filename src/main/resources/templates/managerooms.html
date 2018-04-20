@@ -1,5 +1,4 @@
 	<div th:replace=head.html></div>
-    <div class="content-wrapper">
     	 <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
@@ -17,8 +16,8 @@
 					<td th:text="${room.getRoomName()}">Room Name</td>
 					<td>
 					<form th:object = "${deleteroom}" th:action="@{/admin/deleteroom}" method="post">
-					 <input type="hidden" th:value="${room}"/>
-					<button type ="submit">Delete</button>
+					 <input type="hidden" th:value="${room.roomId}" name="deleteRoomId"/>
+					<button type ="submit" name="deleteRoomB">Delete</button>
 					</form>
 					</td>
                 </tr>
