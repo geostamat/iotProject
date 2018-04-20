@@ -39,6 +39,7 @@ public class AdminController {
     public String manageRooms(Model model) {
     	model.addAttribute("rooms", adminService.getAllRooms());
     	model.addAttribute("addroom", new Room());
+    	model.addAttribute("deleteroom", new Room());
         return "managerooms";
     }
     
@@ -65,6 +66,15 @@ public class AdminController {
     	System.out.println("POST controller");
         adminService.addDevice(device);
         return "managedevices";
+    }
+    
+    @RequestMapping(value = "/admin/deleteroom", method = RequestMethod.POST)
+    public String deleteRoom(@ModelAttribute("deleteroom") Room room, Model model) {
+    	System.out.println("POST controller");
+    	System.out.println(room);
+        adminService.deleteRoom(room);
+        System.out.println("Success");
+        return "managerooms";
     }
 	
     

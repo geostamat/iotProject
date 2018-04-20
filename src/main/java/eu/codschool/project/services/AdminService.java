@@ -15,5 +15,6 @@ public interface AdminService {
 	List<Device> getAllDevices();
 	void addDevice(Device device);
 	List<DeviceType> getAllDeviceTypes();
+	void deleteRoom(Room room);
 
 }

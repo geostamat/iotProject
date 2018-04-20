@@ -50,4 +50,10 @@ public class AdminServiceImpl implements AdminService {
 		return deviceTypeRepository.findAll();
 	}
 
+	@Override
+	public void deleteRoom(Room room) {
+		roomRepository.delete(room);
+		
+	}
+
 }
