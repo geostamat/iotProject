@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     
-    private User loggedUser;
+    private User loggedUser = null;
 	
 	@Override
 	public User findByEmail(String email) {
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User returnLoggedUser() {
+	public User getLoggedUser() {
 		return this.loggedUser;
 	}
 

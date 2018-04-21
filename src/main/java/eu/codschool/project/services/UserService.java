@@ -15,6 +15,6 @@ public interface UserService {
 	void save(User user);
 	User findByUserID(Integer id);
 	List<User> findAll();
-	User returnLoggedUser();
+	User getLoggedUser();
 	void setLoggedUser(User loggedUser);
 }

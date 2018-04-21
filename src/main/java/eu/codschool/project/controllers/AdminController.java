@@ -53,6 +53,7 @@ public class AdminController {
      */
     @RequestMapping(value = {"/admin/managedevices"}, method = RequestMethod.GET)
     public String manageDevices(Model model) {
+    	model.addAttribute("loggedUser", userService.getLoggedUser());
     	model.addAttribute("adddevice", new Device());
     	model.addAttribute("devices", adminService.getAllDevices());
     	model.addAttribute("rooms", adminService.getAllRooms());
@@ -71,18 +72,6 @@ public class AdminController {
     public String addDevice(@ModelAttribute("adddevice") Device device, Model model) {
         adminService.addDevice(device);
         return "redirect:/admin/managedevices";
-    }
-
-	
-    /**
-     * 
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = {"/admin/viewdevices"}, method = RequestMethod.GET)
-    public String viewDevices(Model model) {
-    	model.addAttribute("devices", adminService.getAllDevices());
-        return "viewdevices";
     }
     
     //Room specific controllers
