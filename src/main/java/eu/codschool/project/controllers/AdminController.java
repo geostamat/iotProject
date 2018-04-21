@@ -86,10 +86,4 @@ public class AdminController {
         return "viewdevices";
     }
     
-    @RequestMapping(value = {"/admin/manageuserz"}, method = RequestMethod.GET)
-    public String viewUsers(Model model) {
-    	model.addAttribute("users", adminService.getAllUsers());
-        return "viewdevices";
-    }
-    
 }
