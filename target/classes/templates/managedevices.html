@@ -3,27 +3,41 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 	<div th:replace=head.html></div>
-<!--     	 Example DataTables Card
-      <div class="card mb-3">
+		<div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Data Table Example</div>
+          <i class="fa fa-table"></i> Devices </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                  <th>Room Name</th>
+                  <th>Device Name</th>
+                   <th>Device Type</th>
+                   <th>Room</th>
+                   <th>Device IP</th>
+                   <th>Api Key</th>
+                   <th>Access Device</th>
                 </tr>
               </thead>
               <tbody>
-                <tr th:each="room : ${rooms}">
-					<td th:text="${room.getRoomName()}">Room Name</td>
+                <tr th:each="device : ${devices}">
+					<td th:text="${device.getDeviceName()}">Device Name</td>
+					<td th:text="${device.getDeviceType()}">Device Type</td>
+					<td th:text="${device.getRoom()}">Device Room</td>
+					<td th:text="${device.getIpAddress()}">IP Address</td>
+					<td th:text="${device.getApiKey()}">API Key</td>
+					<td><a th:href="@{/accessdevice/}" class="btn btn-info">View Device</a></td>
                 </tr>
+
               </tbody>
+
             </table>
+
           </div>
+
         </div>
- -->    	<div class="container-fluid">
+
+        </div>
     	<fieldset>
     		 <legend>Add Device</legend>
 			<form method="post" th:object="${adddevice}" th:action="@{/admin/managedevices}">

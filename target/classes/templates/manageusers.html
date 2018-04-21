@@ -15,6 +15,7 @@
                    <th>Surname</th>
                    <th>Email</th>
                    <th>Role</th>
+                   <th>View User Devices</th>
                 </tr>
               </thead>
               <tbody>
@@ -22,9 +23,10 @@
 					<td th:text="${user.getName()}">Name</td>
 					<td th:text="${user.getSurname()}">Surname</td>
 					<td th:text="${user.getEmail()}">Email</td>
-					<td th:text="${user.getRole()}">Role</td>
+					<td th:text="${user.getRole()==1 ? 'Simple User' : 'Administrator'}">Role</td>
 					<td><form method="post" th:object=${userViewDevices} th:action="@{/admin/manageuserdevices}">
-					<input type="hidden" th:value="${user.getUserID()}">
+					<input type="hidden" th:value="${user.getUserID()}"/>
+					<button type="submit" class="btn btn-info">View Devices</button>
 					</form></td>
                 </tr>
               </tbody>
