@@ -8,7 +8,11 @@ import org.springframework.validation.Validator;
 import eu.codschool.project.entities.User;
 import eu.codschool.project.services.UserService;
 
-
+/**
+ * Validator for spring security and registration error handling.
+ * @author geost
+ *
+ */
 @Component
 public class UserValidator implements Validator {
     @Autowired

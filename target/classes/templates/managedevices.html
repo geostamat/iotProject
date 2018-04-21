@@ -33,6 +33,9 @@
 			  <div class="form-group">
 			    <input type="text" class="form-control" id="deviceip" placeholder="Enter Device IP Address" th:field="*{ipAddress}" required>
 			  </div>
+			  <div class="form-group">
+			    <input type="text" class="form-control" id="deviceapi" placeholder="Enter Device API Key" th:field="*{apiKey}" required>
+			  </div>
 			  <div class="form-group row">
 			    <select class="form-control" id="rooms" name="rooms" th:field="*{room}">
 			        <option th:each="room : ${rooms}"

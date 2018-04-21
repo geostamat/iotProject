@@ -6,6 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Entity that describes the type of the device.
+ * @author geost
+ *
+ */
+
 @Entity(name = "device_type")
 public class DeviceType {
 	

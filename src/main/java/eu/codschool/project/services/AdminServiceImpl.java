@@ -14,6 +14,12 @@ import eu.codschool.project.repositories.DeviceTypeRepository;
 import eu.codschool.project.repositories.RoomRepository;
 import eu.codschool.project.repositories.UserRepository;
 
+/**
+ * Implements the methods used primarily by administrators. 
+ * @author geost
+ *
+ */
+
 @Service
 public class AdminServiceImpl implements AdminService {
 	

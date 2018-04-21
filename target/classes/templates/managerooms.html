@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
 	<div th:replace=head.html></div>
     	 <!-- Example DataTables Card-->
       <div class="card mb-3">
@@ -9,6 +13,7 @@
               <thead>
                 <tr>
                   <th>Room Name</th>
+                  <th>Delete Room</th>
                 </tr>
               </thead>
               <tbody>
@@ -38,4 +43,5 @@
 		</fieldset>
 		</div>
 	</div>
-	<div th:replace="foot.html"></div>
+	
+     <div th:replace="foot.html"></div>

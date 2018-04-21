@@ -11,6 +11,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+/**
+ * Entity that describes the user. Information includes name and last name,
+ * unique email, encrypted password, role (0 for administrator and 1 for
+ * simple user) and a list of the devices they can access (for simple users).  
+ * @author geost
+ *
+ */
 @Entity
 public class User {
 	

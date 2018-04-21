@@ -2,13 +2,19 @@ package eu.codschool.project.services;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import eu.codschool.project.entities.User;
 
+/**
+ * Defines methods used primarily for login/register and simple
+ * user access, along with the information of 
+ * @author geost
+ *
+ */
 public interface UserService {
 	User findByEmail(String email);
 	void save(User user);
 	User findByUserID(Integer id);
 	List<User> findAll();
+	User returnLoggedUser();
+	void setLoggedUser(User loggedUser);
 }

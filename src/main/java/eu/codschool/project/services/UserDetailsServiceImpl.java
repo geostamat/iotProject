@@ -13,6 +13,11 @@ import org.springframework.stereotype.Service;
 
 import eu.codschool.project.entities.User;
 
+/**
+ * Service used by Spring Security
+ * @author geost
+ *
+ */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 	

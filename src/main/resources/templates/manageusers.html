@@ -23,6 +23,9 @@
 					<td th:text="${user.getSurname()}">Surname</td>
 					<td th:text="${user.getEmail()}">Email</td>
 					<td th:text="${user.getRole()}">Role</td>
+					<td><form method="post" th:object=${userViewDevices} th:action="@{/admin/manageuserdevices}">
+					<input type="hidden" th:value="${user.getUserID()}">
+					</form></td>
                 </tr>
               </tbody>
             </table>

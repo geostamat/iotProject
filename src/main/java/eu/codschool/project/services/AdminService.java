@@ -2,12 +2,16 @@ package eu.codschool.project.services;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import eu.codschool.project.entities.Device;
 import eu.codschool.project.entities.DeviceType;
 import eu.codschool.project.entities.Room;
 import eu.codschool.project.entities.User;
+
+/**
+ * Defines methods used primarily by the users with administrator access.
+ * @author geost
+ *
+ */
 
 public interface AdminService {
 	

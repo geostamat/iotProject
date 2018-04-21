@@ -7,7 +7,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import eu.codschool.project.entities.User;
 import eu.codschool.project.repositories.UserRepository;
-
+/**
+ * Implements the methods needed for user authentication and holds,
+ * the logged user.
+ * @author geost
+ *
+ */
 @Service
 public class UserServiceImpl implements UserService{
 	
@@ -16,6 +21,8 @@ public class UserServiceImpl implements UserService{
 	
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+    
+    private User loggedUser;
 	
 	@Override
 	public User findByEmail(String email) {
@@ -36,6 +43,17 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<User> findAll() {
 		return userRepository.findAll();
+	}
+
+	@Override
+	public User returnLoggedUser() {
+		return this.loggedUser;
+	}
+
+	@Override
+	public void setLoggedUser(User loggedUser) {
+		this.loggedUser = loggedUser;
+		
 	}
 
 }

@@ -1,7 +1,11 @@
 <!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">	
+
 	
+
 	<div th:replace=head.html></div>
 		<div class="card mb-3">
         <div class="card-header">
@@ -15,6 +19,7 @@
                    <th>Device Type</th>
                    <th>Room</th>
                    <th>Device IP</th>
+                   <th>Api Key</th>
                 </tr>
               </thead>
               <tbody>
@@ -22,11 +27,19 @@
 					<td th:text="${device.getDeviceName()}">Device Name</td>
 					<td th:text="${device.getDeviceType()}">Device Type</td>
 					<td th:text="${device.getRoom()}">Device Room</td>
-					<td th:text="${device.getIpAddress()}">Device Type</td>
+					<td th:text="${device.getIpAddress()}">IP Address</td>
+					<td th:text="${device.getApiKey()}">API Key</td>
+					<td><a th:href="@{/accessdevice/}" class="btn btn-info">View Device</a></td>
                 </tr>
+
               </tbody>
+
             </table>
+
           </div>
+
         </div>
+
         </div>
+
 	<div th:replace="foot.html"></div>
