@@ -45,7 +45,6 @@ public class IndexController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, String error, String logout) {
         if (error != null)
-        	System.out.println(error);
             model.addAttribute("error", "Your username and password is invalid.");
 
         if (logout != null) {

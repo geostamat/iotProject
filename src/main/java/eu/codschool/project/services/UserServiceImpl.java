@@ -34,6 +34,8 @@ public class UserServiceImpl implements UserService{
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		userRepository.save(user);	
 	}
+	
+	
 
 	@Override
 	public User findByUserID(Integer id) {
@@ -54,6 +56,11 @@ public class UserServiceImpl implements UserService{
 	public void setLoggedUser(User loggedUser) {
 		this.loggedUser = loggedUser;
 		
+	}
+
+	@Override
+	public void saveUser(User user) {
+		userRepository.save(user);
 	}
 
 }

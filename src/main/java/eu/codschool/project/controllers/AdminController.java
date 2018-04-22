@@ -122,7 +122,7 @@ public class AdminController {
     public String deleteUserDevice(@RequestParam(name = "userID") Integer userId, @RequestParam(name = "deleteDeviceId") Integer deviceId, Model model) {
     	User user = userService.findByUserID(userId);
     	user.getDevices().remove(adminService.getDeviceById(deviceId));
-    	userService.save(user);
+    	userService.saveUser(user);
         return "redirect:/admin/manageusers";
     }
     
@@ -137,7 +137,7 @@ public class AdminController {
     public String addUserDevice(@RequestParam(name = "userID") Integer userId, @RequestParam(name = "deviceId") Integer deviceId, Model model) {
     	User user = userService.findByUserID(userId);
     	user.getDevices().add(adminService.getDeviceById(deviceId));
-    	userService.save(user);
+    	userService.saveUser(user);
         return "redirect:/admin/manageusers";
     }
     

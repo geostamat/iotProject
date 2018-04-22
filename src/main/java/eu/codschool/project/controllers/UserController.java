@@ -50,9 +50,6 @@ public class UserController {
     
     @RequestMapping(value = {"/viewaccount"}, method = RequestMethod.POST)
     public String updateAccount(@ModelAttribute("loggedUser") User loggedUser, Model model) {
-    	//Password is not correctly encrypted, do not uncomment.
-    	//loggedUser.setPassword(passwordEncoder.encode(loggedUser.getPassword()));
-    	loggedUser.setPassword(userService.getLoggedUser().getPassword());
     	loggedUser.setRole(userService.getLoggedUser().getRole());
     	loggedUser.setUserID(userService.getLoggedUser().getUserID());
     	userService.setLoggedUser(loggedUser);

@@ -17,4 +17,5 @@ public interface UserService {
 	List<User> findAll();
 	User getLoggedUser();
 	void setLoggedUser(User loggedUser);
+	void saveUser(User user);
 }

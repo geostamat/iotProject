@@ -33,10 +33,10 @@ public class Device {
     private String ipAddress;
     @Column(name = "api_key")
     private String apiKey;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "typeid", nullable = false)
     private DeviceType deviceType;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "roomid", nullable = false)
     private Room room;
     
