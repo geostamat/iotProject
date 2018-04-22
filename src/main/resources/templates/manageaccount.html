@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">	
+
+	
+
+	<div th:replace="${loggedUser.getRole()==1 ? 'userhead.html' : 'head.html'}"></div>
+	
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Update Account Details</div>
+      <div class="card-body">
+        <form th:action="@{/viewaccount}" th:object="${loggedUser}" method="POST">
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                <label for="name">First name</label>
+                <input class="form-control" id="name" type="text" th:field="*{name}" th:value="${loggedUser.getName()}" required>
+              </div>
+              <div class="col-md-6">
+                <label for="lastName">Last name</label>
+                <input class="form-control" id="lastName" type="text" th:field="*{surname}" th:value="${loggedUser.getSurname()}" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input class="form-control" type="email" id="email" th:field="*{email}" th:value="${loggedUser.getEmail()}" readonly>
+          </div>
+          <div class="form-group">
+            <div class="form-row">
+            	<div class="col-md-6">
+                <label for="password">Password</label>
+                <input class="form-control" id="password" type="password" placeholder="Password" th:field="*{password}" required>
+              </div>
+              <div class="col-md-6">
+                <label for="confirmPassword">Confirm password</label>
+                <input class="form-control" id="confirmPassword" type="password" placeholder="Confirm password" required>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit">Update Account</button>
+        </form>
+      </div>
+    </div>
+
+	<div th:replace="foot.html"></div>

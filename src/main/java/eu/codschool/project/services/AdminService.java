@@ -23,5 +23,7 @@ public interface AdminService {
 	void deleteRoom(Room room);
 	Room getRoomById(Integer id);
 	List<User> getAllUsers();
+	void deleteDevice(Device device);
+	Device getDeviceById(Integer deviceId);
 
 }

@@ -77,4 +77,14 @@ public class AdminServiceImpl implements AdminService {
 		return userRepository.findAll();
 	}
 
+	@Override
+	public void deleteDevice(Device device) {
+		deviceRepository.delete(device);		
+	}
+
+	@Override
+	public Device getDeviceById(Integer deviceId) {
+		return deviceRepository.findByDeviceID(deviceId);
+	}
+
 }

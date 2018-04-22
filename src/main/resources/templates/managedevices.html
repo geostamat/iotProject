@@ -26,7 +26,10 @@
 					<td th:text="${device.getRoom()}">Device Room</td>
 					<td th:text="${device.getIpAddress()}">IP Address</td>
 					<td th:text="${device.getApiKey()}">API Key</td>
-					<td><a th:href="@{/accessdevice/}" class="btn btn-info">View Device</a></td>
+					<td><form th:object = "${deletedevice}" th:action="@{/admin/deletedevice}" method="post">
+					 <input type="hidden" th:value="${device.deviceID}" name="deleteDeviceId"/>
+					<button type ="submit" name="deleteDeviceB" class="btn btn-danger">Delete</button>
+					</form></td>
                 </tr>
 
               </tbody>
@@ -50,7 +53,8 @@
 			  <div class="form-group">
 			    <input type="text" class="form-control" id="deviceapi" placeholder="Enter Device API Key" th:field="*{apiKey}" required>
 			  </div>
-			  <div class="form-group row">
+			  <div class="form-group">
+			  <label for="rooms">Select a room: </label>
 			    <select class="form-control" id="rooms" name="rooms" th:field="*{room}">
 			        <option th:each="room : ${rooms}"
 			                th:value="${room.roomId}"
@@ -58,7 +62,8 @@
 			                th:selected="${room}"/>
 			    </select>
 			</div>
-			<div class="form-group row">
+			<div class="form-group">
+				<label for="deviceTypes">Select a deviceType: </label>
 			    <select class="form-control" id="deviceTypes" name="deviceTypes" th:field="*{deviceType}">
 			        <option th:each="deviceType : ${deviceTypes}"
 			                th:value="${deviceType.id}"

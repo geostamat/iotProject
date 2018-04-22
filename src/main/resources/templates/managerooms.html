@@ -22,7 +22,7 @@
 					<td>
 					<form th:object = "${deleteroom}" th:action="@{/admin/deleteroom}" method="post">
 					 <input type="hidden" th:value="${room.roomId}" name="deleteRoomId"/>
-					<button type ="submit" name="deleteRoomB">Delete</button>
+					<button type ="submit" name="deleteRoomB" class="btn btn-danger">Delete</button>
 					</form>
 					</td>
                 </tr>

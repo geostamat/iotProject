@@ -55,6 +55,7 @@ public class AdminController {
     public String manageDevices(Model model) {
     	model.addAttribute("loggedUser", userService.getLoggedUser());
     	model.addAttribute("adddevice", new Device());
+    	model.addAttribute("deletedevice", new Device());
     	model.addAttribute("devices", adminService.getAllDevices());
     	model.addAttribute("rooms", adminService.getAllRooms());
     	model.addAttribute("deviceTypes", adminService.getAllDeviceTypes());
@@ -71,6 +72,18 @@ public class AdminController {
     @RequestMapping(value = "/admin/managedevices", method = RequestMethod.POST)
     public String addDevice(@ModelAttribute("adddevice") Device device, Model model) {
         adminService.addDevice(device);
+        return "redirect:/admin/managedevices";
+    }
+    
+    /**
+     * Handles delete device requests, and redirects to managedevices page
+     * @param device
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/admin/deletedevice", method = RequestMethod.POST)
+    public String deleteDevice(@RequestParam(name = "deleteDeviceId") Integer deviceId, Model model) {
+        adminService.deleteDevice(adminService.getDeviceById(deviceId));
         return "redirect:/admin/managedevices";
     }
     

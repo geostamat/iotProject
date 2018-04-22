@@ -10,5 +10,5 @@ import eu.codschool.project.entities.Device;
  */
 
 public interface DeviceRepository extends JpaRepository<Device, Integer>{
-
+	Device findByDeviceID(Integer deviceId);
 }

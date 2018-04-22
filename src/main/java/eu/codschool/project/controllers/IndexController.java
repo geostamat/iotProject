@@ -74,7 +74,6 @@ public class IndexController {
      */
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registration(@ModelAttribute("user") User user, BindingResult bindingResult, Model model) {
-    	System.out.println("POST controller");
     	user.setRole(1);
         userValidator.validate(user, bindingResult);
         if (bindingResult.hasErrors()) {
@@ -82,7 +81,7 @@ public class IndexController {
             return "registration";
         }
         userService.save(user);
-        return "redirect:/iota5/login";
+        return "redirect:/login";
     }
 
 }
