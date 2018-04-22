@@ -59,5 +59,11 @@ public class UserController {
     	userService.save(loggedUser);
         return "redirect:/viewaccount";
     }
+    
+    @RequestMapping(value = {"/radio"}, method = RequestMethod.GET)
+    public String viewRadio(Model model) {
+    	model.addAttribute("loggedUser", userService.getLoggedUser());
+        return "radio";
+    }
    
 }

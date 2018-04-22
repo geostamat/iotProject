@@ -24,10 +24,13 @@
 					<td th:text="${user.getSurname()}">Surname</td>
 					<td th:text="${user.getEmail()}">Email</td>
 					<td th:text="${user.getRole()==1 ? 'Simple User' : 'Administrator'}">Role</td>
-					<td><form method="post" th:object=${userViewDevices} th:action="@{/admin/manageuserdevices}">
-					<input type="hidden" th:value="${user.getUserID()}"/>
+					<td th:switch=${user.getRole()}>
+					<form th:case="1" method="post" th:object=${userViewDevices} th:action="@{/admin/manageuserdevices}">
+					<input type="hidden" th:value="${user.getUserID()}" name="userId"/>
 					<button type="submit" class="btn btn-info">View Devices</button>
-					</form></td>
+					</form>
+					<span th:case="0">Full Access</span>
+					</td>
                 </tr>
               </tbody>
             </table>

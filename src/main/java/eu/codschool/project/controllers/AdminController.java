@@ -1,6 +1,9 @@
 package eu.codschool.project.controllers;
 
 
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -85,6 +88,57 @@ public class AdminController {
     public String deleteDevice(@RequestParam(name = "deleteDeviceId") Integer deviceId, Model model) {
         adminService.deleteDevice(adminService.getDeviceById(deviceId));
         return "redirect:/admin/managedevices";
+    }
+    
+    //Manage user access to devices controllers
+    
+    /**
+     * Returns the page with the devices the user has access to, and the ones that can be added
+     * @param userId
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = {"/admin/manageuserdevices"}, method = RequestMethod.POST)
+    public String manageUserDevices(@RequestParam(name = "userId") Integer userId, Model model) {
+    	model.addAttribute("loggedUser", userService.getLoggedUser());
+    	model.addAttribute("user", userService.findByUserID(userId));
+    	model.addAttribute("adddevice", new Device());
+    	model.addAttribute("deletedevice", new Device());
+    	//add only the devices that the user does not already have access to
+    	List<Device> devices = adminService.getAllDevices();
+    	devices.removeAll(userService.findByUserID(userId).getDevices());
+    	model.addAttribute("devices", devices);
+        return "manageuserdevices";
+    }
+    
+    /**
+     * Handles removal of device from a user, redirects to manageusers
+     * @param userId
+     * @param deviceId
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = {"/admin/deleteuserdevice"}, method = RequestMethod.POST)
+    public String deleteUserDevice(@RequestParam(name = "userID") Integer userId, @RequestParam(name = "deleteDeviceId") Integer deviceId, Model model) {
+    	User user = userService.findByUserID(userId);
+    	user.getDevices().remove(adminService.getDeviceById(deviceId));
+    	userService.save(user);
+        return "redirect:/admin/manageusers";
+    }
+    
+    /**
+     * Handles adding a device to a use, redirects to manageusers
+     * @param userId
+     * @param deviceId
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = {"/admin/adduserdevice"}, method = RequestMethod.POST)
+    public String addUserDevice(@RequestParam(name = "userID") Integer userId, @RequestParam(name = "deviceId") Integer deviceId, Model model) {
+    	User user = userService.findByUserID(userId);
+    	user.getDevices().add(adminService.getDeviceById(deviceId));
+    	userService.save(user);
+        return "redirect:/admin/manageusers";
     }
     
     //Room specific controllers
