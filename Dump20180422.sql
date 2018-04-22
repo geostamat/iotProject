@@ -54,12 +54,13 @@ CREATE TABLE `device` (
   `ip_address` varchar(100) NOT NULL,
   `typeid` int(11) NOT NULL,
   `roomid` int(11) NOT NULL,
+  `api_key` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`deviceid`),
   KEY `roomid_idx` (`roomid`),
   KEY `typeid_idx` (`typeid`),
   CONSTRAINT `roomid` FOREIGN KEY (`roomid`) REFERENCES `room` (`roomid`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `typeid` FOREIGN KEY (`typeid`) REFERENCES `device_type` (`typeid`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,6 +69,7 @@ CREATE TABLE `device` (
 
 LOCK TABLES `device` WRITE;
 /*!40000 ALTER TABLE `device` DISABLE KEYS */;
+INSERT INTO `device` VALUES (10,'Kitchen Fridge','123.12.12.123',2,19,'asdasdf1fsd5ASf'),(12,'Coffee Maker','145.254.123.213',1,19,'jkasSDjhad2jsdha23'),(13,'Radio','http://localhost:8081/radio',7,22,'asdasdf1fsd5ASf'),(14,'Main Door Lock','12344.5667.89900',3,22,'asdsafjaskfhPASF213wafasfn');
 /*!40000 ALTER TABLE `device` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,7 +84,7 @@ CREATE TABLE `device_type` (
   `typeid` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`typeid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +93,7 @@ CREATE TABLE `device_type` (
 
 LOCK TABLES `device_type` WRITE;
 /*!40000 ALTER TABLE `device_type` DISABLE KEYS */;
-INSERT INTO `device_type` VALUES (1,'Coffee Maker'),(2,'SmartFridge'),(3,'Lock'),(4,'Coffee Maker'),(5,'SmartFridge'),(6,'Lock');
+INSERT INTO `device_type` VALUES (1,'Coffee Maker'),(2,'SmartFridge'),(3,'Lock'),(7,'Radio');
 /*!40000 ALTER TABLE `device_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -106,7 +108,7 @@ CREATE TABLE `room` (
   `roomid` int(11) NOT NULL AUTO_INCREMENT,
   `roomname` varchar(100) NOT NULL,
   PRIMARY KEY (`roomid`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,7 +117,7 @@ CREATE TABLE `room` (
 
 LOCK TABLES `room` WRITE;
 /*!40000 ALTER TABLE `room` DISABLE KEYS */;
-INSERT INTO `room` VALUES (1,'Living Room'),(2,'Kitchen'),(3,'Back Yard'),(4,'Bedroom'),(5,'Living Room'),(6,'Kitchen'),(7,'Back Yard'),(8,'Bedroom');
+INSERT INTO `room` VALUES (19,'Kitchen'),(20,'Bathroom'),(22,'Living Room'),(24,'Bedroom');
 /*!40000 ALTER TABLE `room` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,7 +136,7 @@ CREATE TABLE `user` (
   `password` char(70) NOT NULL,
   `role` int(11) NOT NULL,
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,7 +145,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (2,'Giorgos','Stamatis','user1@user.com','$2a$10$3U0dvrRs6lWMsnGGExwgyeoG4o80jOZe3vu1cfIU2LCkjBB3aszJ2',1);
+INSERT INTO `user` VALUES (9,'Giorgos','Stamatis','user1@user.com','$2a$10$LH.qhgPOnnF/UmBIOzkzhOipHa.soZWRaLYOEpqTL5sx4c1mIaHHS',0),(15,'Vagelis','Xatzitzanos','user3@user.com','$2a$10$GcH52hSSZU9cHYTu1CIpHOsJ3zTN.0PihD11dY3OUmLnsgTuLyMy2',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -167,6 +169,7 @@ CREATE TABLE `user_devices` (
 
 LOCK TABLES `user_devices` WRITE;
 /*!40000 ALTER TABLE `user_devices` DISABLE KEYS */;
+INSERT INTO `user_devices` VALUES (15,12),(15,13);
 /*!40000 ALTER TABLE `user_devices` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -179,4 +182,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-17  2:33:44
+-- Dump completed on 2018-04-22 11:12:41
